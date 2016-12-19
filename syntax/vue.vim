@@ -33,22 +33,22 @@ syntax include @HTML syntax/html.vim
 if exists("b:current_syntax")
   unlet b:current_syntax
 endif
-syntax region html keepend start=/^<template>/ end=/^<\/template>/ contains=@HTML fold
+syntax region html keepend matchgroup=Delimiter start=/^<template>/ end=/^<\/template>/ contains=@HTML fold
 
 if s:syntaxes.pug
   syntax include @PUG syntax/pug.vim
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region pug keepend start=/<template lang="[^"]*pug[^"]*">/ end="</template>" contains=@PUG fold
-  syntax region pug keepend start=/<template lang="[^"]*jade[^"]*">/ end="</template>" contains=@PUG fold
+  syntax region pug keepend matchgroup=Delimiter start=/<template lang="[^"]*pug[^"]*">/ end="</template>" contains=@PUG fold
+  syntax region pug keepend matchgroup=Delimiter start=/<template lang="[^"]*jade[^"]*">/ end="</template>" contains=@PUG fold
 endif
 
 syntax include @JS syntax/javascript.vim
+syntax region javascript keepend matchgroup=Delimiter start=/<script\( lang="babel"\)\?\( type="text\/babel"\)\?>/ end="</script>" contains=@JS fold
 if exists("b:current_syntax")
   unlet b:current_syntax
 endif
-syntax region javascript keepend start=/<script\( lang="babel"\)\?\( type="text\/babel"\)\?>/ end="</script>" contains=@JS fold
 
 if s:syntaxes.coffee
   syntax include @COFFEE syntax/coffee.vim
@@ -63,14 +63,14 @@ syntax include @CSS syntax/css.vim
 if exists("b:current_syntax")
   unlet b:current_syntax
 endif
-syntax region css keepend start=/<style\( \+scoped\)\?>/ end="</style>" contains=@CSS fold
+syntax region css keepend matchgroup=Delimiter start=/<style\( \+scoped\)\?>/ end="</style>" contains=@CSS fold
 
 if s:syntaxes.stylus
   syntax include @stylus syntax/stylus.vim
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region stylus keepend start=/<style lang="[^"]*stylus[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@stylus fold
+  syntax region stylus keepend matchgroup=Delimiter start=/<style lang="[^"]*stylus[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@stylus fold
 endif
 
 if s:syntaxes.sass
@@ -78,7 +78,7 @@ if s:syntaxes.sass
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region sass keepend start=/<style\( \+scoped\)\? lang="[^"]*sass[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@sass fold
+  syntax region sass keepend matchgroup=Delimiter start=/<style\( \+scoped\)\? lang="[^"]*sass[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@sass fold
 endif
 
 if s:syntaxes.scss
@@ -86,7 +86,7 @@ if s:syntaxes.scss
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region scss keepend start=/<style\( \+scoped\)\? lang="[^"]*scss[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@scss fold
+  syntax region scss keepend matchgroup=Delimiter start=/<style\( \+scoped\)\? lang="[^"]*scss[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@scss fold
 endif
 
 if s:syntaxes.less
@@ -94,7 +94,7 @@ if s:syntaxes.less
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region less keepend matchgroup=PreProc start=/<style\%( \+scoped\)\? lang="less"\%( \+scoped\)\?>/ end="</style>" contains=@less fold
+  syntax region less keepend matchgroup=Delimiter start=/<style\%( \+scoped\)\? lang="less"\%( \+scoped\)\?>/ end="</style>" contains=@less fold
 endif
 
 let b:current_syntax = "vue"
